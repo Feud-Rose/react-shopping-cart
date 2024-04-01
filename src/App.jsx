@@ -6,9 +6,9 @@ function App() {
 
   return (
     <>
-      <p className="hello">
+      <h1 className="hello">
         Hello
-      </p>
+      </h1>
     </>
   )
 }
