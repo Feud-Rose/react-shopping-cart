@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 
 const StyledLink = styled.a`
   padding: 0.75em 1em;
@@ -27,15 +29,16 @@ const StyledDiv = styled.div`
 `;
 
 
+
 function NavBar(){
   
     return (
         <>
           <div role="navigation">
             <StyledDiv>
-              <StyledLink href=""> Home</StyledLink>
-              <StyledLink href=""> Shop</StyledLink>
-              <CartLink href=""> Checkout</CartLink>
+              <Link to="/">Home</Link>
+              <Link to="/Store">Store</Link>
+              <Link to="/Checkout"> Checkout</Link>
             </StyledDiv>
             
           </div>

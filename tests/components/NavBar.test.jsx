@@ -10,10 +10,10 @@ describe("NavBar Home button", () => {
     });
 });
 
-describe("NavBar Shop button", () => {
-    it("says Shop", () => {
+describe("NavBar Store button", () => {
+    it("says Store", () => {
         render(<NavBar />);
-        expect(screen.getByRole("link",{name: 'Shop'}).textContent).toMatch("Shop");
+        expect(screen.getByRole("link",{name: 'Store'}).textContent).toMatch("Store");
 
     });
 });
