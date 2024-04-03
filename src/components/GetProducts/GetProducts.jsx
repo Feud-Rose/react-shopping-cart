@@ -1,31 +1,88 @@
 import { useState,useEffect } from "react";
-  
+import styled from "styled-components";
+
+const StoreProductsDiv = styled.div`
+  min-width: 230px;
+  max-width: 95%;
+  padding: 0.75em 1em;
+  background-color: #333333;
+  display: flex;
+  flex-flow: row wrap ;
+  text-decoration: none;
+  border-radius: .25em;
+  margin:0.25em;
+ 
+ 
+`;
+
+const ProductCardDiv = styled.div`
+  align-self: center;
+  min-width: 100px;
+  max-width: 300px;
+  height:200px;
+  padding: 0.75em 1em;
+  background-color: #e6e6ea;
+  display: grid;
+  grid-template-rows: 25px 125px 50px;
+  grid-template-columns: auto auto;
+  justify-self: center;
+  text-decoration: none;
+  border-radius: .25em;
+  margin: 10px auto;
+  text-overflow: ellipsis;
+`;
+
+const StyledDescription = styled.p`
+text-overflow: ellipsis;
+grid-area: 2/2;
+max-width: 75ch;
+
+`
+
+const ImagePreview = styled.img`
+max-height:auto; 
+max-width:100px;
+`;
+const StyledPrice = styled.p`
+grid-area: 3/1;
+`;
+
+const StyledButton = styled.button`
+grid-area: 3/2;
+`;
+
+
+
 const GetProducts = () => {
  
       const [products, setProducts] = useState(null);
     
       useEffect(() => {
 
-        fetch('https://fakestoreapi.com/products?limit=8')
+        fetch('https://fakestoreapi.com/products?limit=9')
         .then(res=>res.json())
         .then(json=>setProducts(json)) 
       
       }, []);
-    
+ 
       return (
         <>
           <h1>Products</h1>
           {products ?
-           <div>
+           <StoreProductsDiv>
             {products.map((item) => 
-            <div key={item.id}>
-                <img src={item.image} alt={item.title} srcset="" />
+            <ProductCardDiv key={item.id}>
+                <ImagePreview src={item.image} alt={item.title} srcSet="" />
                 <div>{item.title}</div>
-                <div>{item.price}</div>
-                <div>{item.description}</div>
                 
-            </div>)}
-           </div>
+                <StyledDescription> {item.description.length > 70 ?
+                `${item.description.substring(0, 70)}...` : item.description}
+                </StyledDescription>
+                <StyledPrice>$ {+ item.price}</StyledPrice>
+                <StyledButton>Add too Cart</StyledButton>
+                
+            </ProductCardDiv>)}
+           </StoreProductsDiv>
           
          //While Shop Loads 
          : 'Loading...'}

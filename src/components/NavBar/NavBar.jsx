@@ -22,9 +22,10 @@ const CartLink = styled(StyledLink)`
 `;
 
 const StyledDiv = styled.div`
+    text-align: center;
     display:flex;
     background-color: #e6e6ea;
-    width: 100vh;
+    max-width: 100%;
 
 `;
 
@@ -33,17 +34,16 @@ const StyledDiv = styled.div`
 function NavBar(userCart){
   console.log(userCart)
     return (
-        <>
-          <div role="navigation">
-            <StyledDiv>
+        
+          <StyledDiv role="navigation">
+            
               <StyledLink to="/">Home</StyledLink>
               <StyledLink to="/Store">Store</StyledLink>
               <CartLink to="/Checkout"> Checkout</CartLink>
-            </StyledDiv>
             
-          </div>
+          </StyledDiv>
           
-        </>
+        
       );
     
 }
