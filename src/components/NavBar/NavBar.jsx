@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
   padding: 0.75em 1em;
   background-color: #333333;
   color: white;
@@ -30,15 +30,15 @@ const StyledDiv = styled.div`
 
 
 
-function NavBar(){
-  
+function NavBar(userCart){
+  console.log(userCart)
     return (
         <>
           <div role="navigation">
             <StyledDiv>
-              <Link to="/">Home</Link>
-              <Link to="/Store">Store</Link>
-              <Link to="/Checkout"> Checkout</Link>
+              <StyledLink to="/">Home</StyledLink>
+              <StyledLink to="/Store">Store</StyledLink>
+              <CartLink to="/Checkout"> Checkout</CartLink>
             </StyledDiv>
             
           </div>

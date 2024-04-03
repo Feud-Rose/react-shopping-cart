@@ -1,14 +1,14 @@
-import { useState } from "react"
+import { useState,setState } from "react"
+import GetProducts from "../GetProducts/GetProducts"
 
 
 
 
+function Store(props) {
 
-function Store() {
-    console.log(this.productData)
 return (
     <div>
-      card holder goes here
+     <GetProducts />
       
     </div>
 

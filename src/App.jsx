@@ -5,15 +5,18 @@ import { Outlet } from 'react-router-dom'
 import GetProducts from './components/GetProducts/GetProducts'
 
 function App() {
-  const [userCart, setUserCart] = useState({})
-  const [productData, setProductData] = useState({})
-  .setProductData = GetProducts()
+  const [userCart, setUserCart] = useState(0);
+  const [productData, setProductData] = useState(0);
+
 
  
   return (
     <>
-    <NavBar/>
-    <Outlet />
+    <NavBar
+    userCart/>
+    <Outlet
+    productData
+    userCart />
     </>
   );
 }
