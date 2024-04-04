@@ -55,7 +55,7 @@ function NavBar(userCart){
               
               <CartCheckoutHolder >
                 <CartContext.Consumer> 
-                  {value=> <p>{value.length}</p>}
+                  {value=> <p>{value.userCart.length}</p>}
                 </CartContext.Consumer> 
                 <ShoppingCart />
                 <CartLink to="/Checkout"> Checkout</CartLink>

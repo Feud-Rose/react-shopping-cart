@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import styled from "styled-components";
 import { CartContext } from "../ShoppingCart/CartContext";
 
@@ -57,7 +57,8 @@ grid-area: 3/2;
 const GetProducts = () => {
  
       const [products, setProducts] = useState(null);
-    
+      const userCart = useContext(CartContext)
+      
       useEffect(() => {
 
         fetch('https://fakestoreapi.com/products?limit=9')
@@ -67,7 +68,9 @@ const GetProducts = () => {
       }, []);
  
       function handleAddTooCart(data) {
-        console.log(data)
+        userCart.setUserCart(prevState =>[...prevState,data])
+        console.log(userCart)
+        
       }
 
 

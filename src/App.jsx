@@ -7,7 +7,7 @@ import { CartContext } from './components/ShoppingCart/CartContext'
 
 
 function App() {
-  const [userCart, setUserCart] = useState(0);
+  const [userCart, setUserCart] = useState([]);
   const [productData, setProductData] = useState(0);
 
 
@@ -15,13 +15,11 @@ function App() {
  
   return (
     <>
-    <CartContext.Provider value={userCart}/>
-    
-    <NavBar
-    userCart/>
-    <Outlet
-    productData
-    userCart />
+    <CartContext.Provider value={{userCart,setUserCart}}>
+
+    <NavBar/>
+    <Outlet/>
+    </CartContext.Provider>
     </>
   );
 }
