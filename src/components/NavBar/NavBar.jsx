@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
+import { CartContext } from "../ShoppingCart/CartContext";
 
 const StyledLink = styled(Link)`
   padding: 0.75em 1em;
@@ -15,9 +17,16 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const CartCheckoutHolder = styled.div`
+margin-left: auto;
+display:flex;
+align-items:center;
+
+`;
+
 const CartLink = styled(StyledLink)`
-  justify-self: flex-end;
-  margin-left: auto;
+  
+  
 
 `;
 
@@ -33,13 +42,24 @@ const StyledDiv = styled.div`
 
 function NavBar(userCart){
   console.log(userCart)
+ 
+
+
+
     return (
         
           <StyledDiv role="navigation">
             
               <StyledLink to="/">Home</StyledLink>
               <StyledLink to="/Store">Store</StyledLink>
-              <CartLink to="/Checkout"> Checkout</CartLink>
+              
+              <CartCheckoutHolder >
+                <CartContext.Consumer> 
+                  {value=> <p>{value.length}</p>}
+                </CartContext.Consumer> 
+                <ShoppingCart />
+                <CartLink to="/Checkout"> Checkout</CartLink>
+              </CartCheckoutHolder >
             
           </StyledDiv>
           

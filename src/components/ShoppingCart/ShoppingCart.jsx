@@ -1,14 +1,25 @@
-import { useState, setState } from "react"
+import { useState, useEffect } from "react"
+import styled from "styled-components"
+
+const StyledCartIcon = styled.img`
+max-width: 45px;
+max-height: auto;
+margin-left: auto;
+`;
+
 
 const ShoppingCart = () => {
-    const [items, setItems] = useState([1]);
-    setItems({id:1})
-    useEffect(() => {
-        localStorage.setItem('items', JSON.stringify(items));
-      }, [items]);
+  
+
+    //On load check localestorage for shopping cart data
+    //use
 
   
-    return items
+    return(
+      <div>
+        <StyledCartIcon src="../src/assets/shopping-cart.svg" alt=""/>
+      </div>
+    )
     
 }
 

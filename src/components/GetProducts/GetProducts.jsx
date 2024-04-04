@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import styled from "styled-components";
+import { CartContext } from "../ShoppingCart/CartContext";
 
 const StoreProductsDiv = styled.div`
   min-width: 230px;
@@ -65,6 +66,11 @@ const GetProducts = () => {
       
       }, []);
  
+      function handleAddTooCart(data) {
+        console.log(data)
+      }
+
+
       return (
         <>
           <h1>Products</h1>
@@ -79,7 +85,7 @@ const GetProducts = () => {
                 `${item.description.substring(0, 70)}...` : item.description}
                 </StyledDescription>
                 <StyledPrice>$ {+ item.price}</StyledPrice>
-                <StyledButton>Add too Cart</StyledButton>
+                <StyledButton onClick={() => handleAddTooCart({item})}>Add too Cart</StyledButton>
                 
             </ProductCardDiv>)}
            </StoreProductsDiv>
