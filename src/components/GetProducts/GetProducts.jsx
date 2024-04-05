@@ -68,8 +68,8 @@ const GetProducts = () => {
       }, []);
  
       function handleAddTooCart(data) {
-        userCart.setUserCart(prevState =>[...prevState,data])
-        console.log(userCart)
+        userCart.setUserCart(prevState =>[...prevState,data.item])
+        console.log(data.item)
         
       }
 

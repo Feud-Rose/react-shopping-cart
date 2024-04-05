@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react"
 import styled from "styled-components"
 
 const StyledCartIcon = styled.img`
@@ -8,13 +7,8 @@ margin-left: auto;
 `;
 
 
+
 const ShoppingCart = () => {
-  
-
-    //On load check localestorage for shopping cart data
-    //use
-
-  
     return(
       <div>
         <StyledCartIcon src="../src/assets/shopping-cart.svg" alt=""/>
