@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
-
 import { CartContext } from "../ShoppingCart/CartContext";
 
 const StyledLink = styled(Link)`

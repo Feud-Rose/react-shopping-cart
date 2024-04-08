@@ -2,6 +2,8 @@ import { useState,useEffect,useContext } from "react";
 import styled from "styled-components";
 import { CartContext } from "../ShoppingCart/CartContext";
 
+
+
 const StoreProductsDiv = styled.div`
   min-width: 230px;
   max-width: 95%;
@@ -69,7 +71,6 @@ const GetProducts = () => {
  
       function handleAddTooCart(data) {
         userCart.setUserCart(prevState =>[...prevState,data.item])
-        console.log(data.item)
         
       }
 
@@ -87,7 +88,7 @@ const GetProducts = () => {
                 <StyledDescription> {item.description.length > 70 ?
                 `${item.description.substring(0, 70)}...` : item.description}
                 </StyledDescription>
-                <StyledPrice>$ {+ item.price}</StyledPrice>
+                <StyledPrice>${+ item.price}</StyledPrice>
                 <StyledButton onClick={() => handleAddTooCart({item})}>Add too Cart</StyledButton>
                 
             </ProductCardDiv>)}
