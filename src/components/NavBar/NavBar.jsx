@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import { useState,useEffect,useContext } from "react";
 import { CartContext } from "../ShoppingCart/CartContext";
+
 
 const StyledLink = styled(Link)`
   padding: 0.75em 1em;
@@ -39,9 +41,12 @@ const StyledDiv = styled.div`
 
 
 
-function NavBar(userCart){
-  console.log(userCart)
- 
+function NavBar(cartCount){
+
+
+console.log()
+const userCart = useContext(CartContext)
+
 
 
 
@@ -53,9 +58,9 @@ function NavBar(userCart){
               <StyledLink to="/Store">Store</StyledLink>
               
               <CartCheckoutHolder >
-                <CartContext.Consumer> 
-                  {value=> <p>{value.userCart.length}</p>}
-                </CartContext.Consumer> 
+                
+                 <p>{cartCount.value}</p> 
+               
                 <ShoppingCart />
                 <CartLink to="/Checkout"> Checkout</CartLink>
               </CartCheckoutHolder >

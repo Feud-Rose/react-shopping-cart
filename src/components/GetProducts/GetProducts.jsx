@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { CartContext } from "../ShoppingCart/CartContext";
 
 
-
 const StoreProductsDiv = styled.div`
   min-width: 230px;
   max-width: 95%;
@@ -60,6 +59,7 @@ const GetProducts = () => {
  
       const [products, setProducts] = useState(null);
       const userCart = useContext(CartContext)
+
       
       useEffect(() => {
 
@@ -69,9 +69,31 @@ const GetProducts = () => {
       
       }, []);
  
-      function handleAddTooCart(data) {
-        userCart.setUserCart(prevState =>[...prevState,data.item])
-        
+      function handleAddTooCart(data,userCart) {
+        //check if item exists
+        console.log(userCart)
+       let itemExists = userCart.userCart.find(x => x.id === data.item.id)
+        console.log(itemExists)
+        //!if
+
+       if(itemExists){  
+        let productId = itemExists.id
+        console.log(productId)
+
+        const nextCart =  userCart.userCart.map((item) => {
+            if(item.id === productId) {
+                item.quantity += 1
+
+            }
+        })
+        } 
+         
+       else {
+           data.item.quantity = 1
+        userCart.setUserCart(prevState =>[...prevState,data.item],[]) 
+       }
+
+
       }
 
 
@@ -89,7 +111,7 @@ const GetProducts = () => {
                 `${item.description.substring(0, 70)}...` : item.description}
                 </StyledDescription>
                 <StyledPrice>${+ item.price}</StyledPrice>
-                <StyledButton onClick={() => handleAddTooCart({item})}>Add too Cart</StyledButton>
+                <StyledButton onClick={() => handleAddTooCart({item},userCart)}>Add too Cart</StyledButton>
                 
             </ProductCardDiv>)}
            </StoreProductsDiv>

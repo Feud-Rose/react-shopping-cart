@@ -5,18 +5,22 @@ import styled from "styled-components"
 const StoreDiv = styled.div`
 display: flex;
 width:90%;
-
+margin: 1em auto;
 `;
 
 const CartDiv = styled.div`
 background-color: #0C1B33;
 width:70%;
-margin: 2em;
+max-width:700px;
+margin: 1em;
 `;
 
 const TotalsDiv = styled.div`
-
+padding:1em;
 border: 2px solid black;
+height:fit-content;
+margin: 1em 1em 1em auto;
+
 `;
 
 
@@ -24,22 +28,21 @@ const StyledProductDiv = styled.div`
 
   align-self: center;
   min-width: 100px;
-  width:60%;
-  max-width: 300px;
+  
   height:200px;
   padding: 0.75em 1em;
-  background-color: #e6e6ea;
+  background-color: #ffffff;
   display: grid;
   grid-template-rows: 25px 125px 50px;
   grid-template-columns: auto auto;
   justify-self: center;
   text-decoration: none;
   border-radius: .25em;
-  margin: 10px auto;
+  margin:1em;
   text-overflow: ellipsis;
 `;
 const ImagePreview = styled.img`
-max-height:auto; 
+max-height:100px; 
 max-width:100px;
 `;
 const StyledPrice = styled.p`
@@ -90,17 +93,19 @@ const handleTaxes = (props) => {
      }, []);
      return totals.taxes
 } 
+
+
 const handleTotal = (props) => {
     useEffect(() => {
 const tempTotal = +props.subtotal + +props.shipping + +props.taxes
 console.log(tempTotal)
 setTotals(prevState => ({
     ...prevState,
-    totals: tempTotal
+    total: tempTotal
 }))
-}, []);
+}, [totals.taxes]);
 
-return totals.totals
+return totals.total
 }
 const userCart = cart.userCart
 console.log(userCart)
@@ -153,14 +158,7 @@ console.log(userCart)
           : <p>Cart Empty</p>}
                     
         </>
-        /* 
-        
-        
-        -Add some sorta tax/shipping numbers(Consider looking a api for location based taxes)
-
-        -Buttons! that go nowhere at bottom(placeholder confirm/send)
-        
-        */
+     
 
     )
 
