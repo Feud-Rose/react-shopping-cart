@@ -7,25 +7,21 @@ import { CartContext } from './components/ShoppingCart/CartContext'
 
 
 function App() {
-  const [userCart, setUserCart] = useState({
-    cart: [],
-    totalQuantity: 0});
+  const [userCart, setUserCart] = useState([]);
   const [productData, setProductData] = useState(0);
   const [cartCount, setCartCount] = useState(0)
 
   useEffect(() => {
-    console.log(userCart)
-    if(userCart.cart.length > 0){
-      console.log(cartCount)
-  
-    let total = userCart.reduce(
-      (prevValue, currentValue) => prevValue + currentValue.quantity,
-      0)
-      console.log(userCart)
-  
-    setCartCount(total) 
-  }
-  },[userCart,cartCount])
+
+  console.log(userCart)
+  console.log(cartCount)
+  if(userCart.length > 0){
+  let total = userCart.reduce(
+    (prevValue, currentValue) => prevValue + currentValue.quantity,
+    0)
+  setCartCount(total)
+
+}},[userCart,cartCount])
  
   return (
     <>

@@ -41,11 +41,10 @@ const StyledDiv = styled.div`
 
 
 
-function NavBar(cartCount){
-
-
-console.log()
-const userCart = useContext(CartContext)
+function NavBar(props){
+const cart = useContext(CartContext)
+console.log(cart)
+console.log(props)
 
 
 
@@ -59,7 +58,7 @@ const userCart = useContext(CartContext)
               
               <CartCheckoutHolder >
                 
-                 <p>{cartCount.value}</p> 
+                 <p>{props.value}</p> 
                
                 <ShoppingCart />
                 <CartLink to="/Checkout"> Checkout</CartLink>

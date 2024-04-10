@@ -71,8 +71,10 @@ const GetProducts = () => {
  
       function handleAddTooCart(data,userCart) {
         //check if item exists
-        console.log(userCart)
-       let itemExists = userCart.userCart.find(x => x.id === data.item.id)
+
+       const nextCart =  userCart
+       console.log(nextCart)
+       let itemExists = nextCart.userCart.find(x => x.id === data.item.id)
         console.log(itemExists)
         //!if
 
@@ -80,23 +82,28 @@ const GetProducts = () => {
         let productId = itemExists.id
         console.log(productId)
 
-        const nextCart =  userCart.userCart.map((item) => {
-            if(item.id === productId) {
-                item.quantity += 1
-
-            }
+      /*   userCart.setUserCart((prevState) => { */
+            nextCart.userCart.map((item) => {
+                if(item.id === productId) {
+                    item.quantity += 1
+                    nextCart.setUserCart(prevState =>[...prevState]) 
+        
+                    
+                }
         })
-        } 
+       /*  }) */
+        console.log(userCart)
+        }
+   
          
        else {
            data.item.quantity = 1
-        userCart.setUserCart(prevState =>[...prevState,data.item],[]) 
+        nextCart.setUserCart(prevState =>[...prevState,data.item]) 
        }
 
-
-      }
-
-
+       console.log(userCart)
+    }
+   
       return (
         <>
           <h1>Products</h1>
@@ -120,11 +127,12 @@ const GetProducts = () => {
          : 'Loading...'}
         </>
       );
+ } 
 
 
 
 
-    }
+    
     
 
 export default GetProducts
