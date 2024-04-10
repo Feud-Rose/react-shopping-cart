@@ -3,13 +3,12 @@ import { CartContext } from "../ShoppingCart/CartContext";
 
 
 
-export default function ChangeQuantity(){
-return(
-function handleQuantityChange (prop,quantityChange){
+export default function ChangeQuantity(prop,quantityChange){
+
 
   const userCart = useContext(CartContext)
-  const productId = prop.id
-
+  const productId = prop.value
+  console.log(productId)
   
   if(quantityChange < 0){
     userCart.userCart.map((item) => {
@@ -27,4 +26,4 @@ function handleQuantityChange (prop,quantityChange){
     })
   }
 
-})}
+}
