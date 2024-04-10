@@ -13,8 +13,6 @@ function App() {
 
   useEffect(() => {
 
-  console.log(userCart)
-  console.log(cartCount)
   if(userCart.length > 0){
   let total = userCart.reduce(
     (prevValue, currentValue) => prevValue + currentValue.quantity,

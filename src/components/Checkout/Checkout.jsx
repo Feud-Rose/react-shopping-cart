@@ -1,6 +1,10 @@
 import { CartContext } from "../ShoppingCart/CartContext"
 import { useState,useContext,useEffect } from "react"
 import styled from "styled-components"
+import ChangeQuantity from "../ShoppingCart/ChangeQuantity";
+import handleCheckoutCart from "./HandleCheckoutCart";
+import HandleTotalDiv from "./HandleTotalDiv";
+
 
 const StoreDiv = styled.div`
 display: flex;
@@ -10,7 +14,6 @@ margin: 1em auto;
 
 const CartDiv = styled.div`
 background-color: #0C1B33;
-width:70%;
 max-width:700px;
 margin: 1em;
 `;
@@ -33,8 +36,8 @@ const StyledProductDiv = styled.div`
   padding: 0.75em 1em;
   background-color: #ffffff;
   display: grid;
-  grid-template-rows: 25px 125px 50px;
-  grid-template-columns: auto auto;
+  grid-template-rows: 150px 50px;
+  grid-template-columns: 1fr 2fr 1fr;
   justify-self: center;
   text-decoration: none;
   border-radius: .25em;
@@ -46,74 +49,45 @@ max-height:100px;
 max-width:100px;
 `;
 const StyledPrice = styled.p`
-grid-area: 3/1;
+grid-area: 1/3;
 `;
 
-const StyledButton = styled.button`
-grid-area: 3/2;
+const StyledRemoveButton = styled.button`
+grid-area: 2/3;
+height: auto;
 `;
+const StyledQuantityDiv = styled.div`
+grid-area: 2/1/2/3;
+height: auto;
+justify-content:center;
+`;
+const StyledQuantityButton = styled.button`
 
+`;
 
 const Checkout = () => {
 
 
 const cart = useContext(CartContext)
-const [totals,setTotals] = useState ({
-    subtotal: 0,
-    taxes: 0,
-    shipping: 5.95,
-    total: 0
-})
-
-const handleSubtotal = (props) => {
-    
-    useEffect(() => {
-    const temptTotal = props.reduce(
-        (oldTotal, newTotal) => oldTotal + newTotal.price, 0);
-   
-    console.log(temptTotal)
-    setTotals(prevState => ({
-        ...prevState,
-        subtotal: temptTotal})
-        )
-     }, []);
-     console.log(totals)
-     return totals.subtotal
-} 
-
-const handleTaxes = (props) => {
-    
-    useEffect(() => {
-    const tax =+props.subtotal * 0.05
-    const roundedTax = tax.toFixed(2)
-    setTotals(prevState => ({
-        ...prevState,
-        taxes: roundedTax})
-        )
-     }, []);
-     return totals.taxes
-} 
 
 
-const handleTotal = (props) => {
-    useEffect(() => {
-const tempTotal = +props.subtotal + +props.shipping + +props.taxes
-console.log(tempTotal)
-setTotals(prevState => ({
-    ...prevState,
-    total: tempTotal
-}))
-}, [totals.taxes]);
+const handleDelete = (data) => {
+    console.log() 
+    const filteredCart = cart.userCart.filter((item) => item.id != data);
+    console.log(filteredCart)   
+    const nextCart = cart
+    nextCart.setUserCart(filteredCart)  
+       
+        }
 
-return totals.total
-}
+
+
 const userCart = cart.userCart
 console.log(userCart)
 
 
     return(
         <>
-       { console.log(userCart)}
 
         <h2>Checkout</h2>
            
@@ -122,32 +96,10 @@ console.log(userCart)
 
           (<StoreDiv>
             <CartDiv>
-            {userCart.map((item) => 
-            <StyledProductDiv key={item.id}>
-                <ImagePreview src={item.image} alt={item.title} srcSet="" />
-                <p>{item.title}</p>
-                
-                <StyledPrice>${+ item.price}</StyledPrice>
-                <StyledButton>Remove From Cart</StyledButton>
-                
-            </StyledProductDiv>)
-            }
+            {handleCheckoutCart({userCart,handleDelete})}
             </CartDiv>
             <TotalsDiv>
-                <div>
-                    <h3>Subtotal</h3>
-                    <div>{handleSubtotal(userCart)}</div>
-                    <h3>Tax and Shipping</h3>
-                    <div>Tax:{handleTaxes(totals)}</div>
-                    <div>Shipping:{totals.shipping}</div>
-                </div>
-                <div>
-                    <h3>Total</h3>
-                    <div>{handleTotal(totals)}</div>
-                    
-                   
-                    <button> {/*call onClick */}Submit</button>
-                </div>
+            {HandleTotalDiv()}
 
             </TotalsDiv>
           

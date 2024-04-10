@@ -43,8 +43,7 @@ const StyledDiv = styled.div`
 
 function NavBar(props){
 const cart = useContext(CartContext)
-console.log(cart)
-console.log(props)
+
 
 
 
