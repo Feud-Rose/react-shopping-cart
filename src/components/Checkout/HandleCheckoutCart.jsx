@@ -51,11 +51,9 @@ grid-area: 4/3/4/5
 
 
 export default function handleCheckoutCart(props) {
-    console.log(props)
     const userCart = useContext(CartContext)
 
     function handleChangeQuantity(productId,quantityChange){
-        console.log(quantityChange)
         const nextCart = userCart
         if(quantityChange > 0){
             nextCart.userCart.map((item) => {
@@ -72,7 +70,6 @@ export default function handleCheckoutCart(props) {
             nextCart.userCart.map((item) => {
                 if(item.id === productId) {
                     const checkForPositive = item.quantity += quantityChange
-                    console.log(checkForPositive)
                     if(checkForPositive >= 1)
                     {
                     

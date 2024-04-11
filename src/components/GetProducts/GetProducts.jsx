@@ -73,14 +73,11 @@ const GetProducts = () => {
         //check if item exists
 
        const nextCart =  userCart
-       console.log(nextCart)
        let itemExists = nextCart.userCart.find(x => x.id === data.item.id)
-        console.log(itemExists)
         //!if
 
        if(itemExists){  
         let productId = itemExists.id
-        console.log(productId)
 
       /*   userCart.setUserCart((prevState) => { */
             nextCart.userCart.map((item) => {
@@ -92,7 +89,6 @@ const GetProducts = () => {
                 }
         })
        /*  }) */
-        console.log(userCart)
         }
    
          
@@ -101,7 +97,6 @@ const GetProducts = () => {
         nextCart.setUserCart(prevState =>[...prevState,data.item]) 
        }
 
-       console.log(userCart)
     }
    
       return (

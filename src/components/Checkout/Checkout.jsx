@@ -72,9 +72,7 @@ const cart = useContext(CartContext)
 
 
 const handleDelete = (data) => {
-    console.log() 
     const filteredCart = cart.userCart.filter((item) => item.id != data);
-    console.log(filteredCart)   
     const nextCart = cart
     nextCart.setUserCart(filteredCart)  
        
@@ -83,7 +81,6 @@ const handleDelete = (data) => {
 
 
 const userCart = cart.userCart
-console.log(userCart)
 
 
     return(

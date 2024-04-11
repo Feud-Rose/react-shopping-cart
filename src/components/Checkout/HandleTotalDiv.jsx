@@ -13,44 +13,47 @@ export default function HandleTotalDiv() {
         total: 0
     })
 
-    const handleSubtotal = (p) => {
+    const handleSubtotal = () => {
         
         useEffect(() => {
         const temptTotal = cart.userCart.reduce(
             (oldTotal, newTotal) => oldTotal + (newTotal.price * newTotal.quantity), 0);
-       
-        console.log(temptTotal)
+            console.log(totals.subtotal)
+        const roundedSubTotal = temptTotal.toFixed(2)
         setTotals(prevState => ({
             ...prevState,
-            subtotal: temptTotal})
+            subtotal: roundedSubTotal})
             )
-         }, []);
-         console.log(totals)
-         return totals.subtotal
+         }, [cart]);
+         return (
+            totals.subtotal
+         )
     } 
     
-    const handleTaxes = (props) => {
-        
+    const handleTaxes = () => {
         useEffect(() => {
-        const tax =+props.subtotal * 0.05
+        console.log(totals)
+        const tax =+totals.subtotal * 0.05
         const roundedTax = tax.toFixed(2)
         setTotals(prevState => ({
             ...prevState,
             taxes: roundedTax})
             )
-         }, []);
-         return totals.taxes
+         }, [cart,totals]);
+         return( 
+            totals.taxes
+        )
     } 
 
-    const handleTotal = (props) => {
+    const handleTotal = () => {
         useEffect(() => {
-    const tempTotal = +props.subtotal + +props.shipping + +props.taxes
-    console.log(tempTotal)
+    const tempTotal = +totals.subtotal + +totals.shipping + +totals.taxes
+    const roundedTotal = tempTotal.toFixed(2)
     setTotals(prevState => ({
         ...prevState,
-        total: tempTotal
+        total: roundedTotal
     }))
-    }, []);
+    }, [cart,totals]);
     
     return totals.total
     }
@@ -59,14 +62,14 @@ return(
     <>
     <div>
         <h3>Subtotal</h3>
-        <div>${handleSubtotal(cart)}</div>
+        <div>${handleSubtotal()}</div>
         <h3>Tax and Shipping</h3>
-        <div>Tax: ${handleTaxes(totals)} (5%)</div>
+        <div>Tax: $ {handleTaxes()} (5%)</div>
         <div>Shipping:${totals.shipping}</div>
     </div>
     <div>
         <h3>Total</h3>
-        <div>${handleTotal(totals)}</div>
+        <div>${handleTotal()}</div>
         
     
         <button> {/*call onClick */}Submit</button>
