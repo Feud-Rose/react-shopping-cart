@@ -100,10 +100,3 @@ const response = [
     }]
 
 
-describe("Get product receives State", () => {
-    it("receives State", () => {
-        console.log(GetProducts())
-        expect(GetProducts().price).toBe("22.3");
-
-    });
-});

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import { useState,useEffect,useContext } from "react";
 import { CartContext } from "../ShoppingCart/CartContext";
+import { CartCountContext } from "../ShoppingCart/CartCountContext";
 
 
 const StyledLink = styled(Link)`
@@ -26,8 +27,6 @@ align-items:center;
 `;
 
 const CartLink = styled(StyledLink)`
-  
-  
 
 `;
 
@@ -41,12 +40,11 @@ const StyledDiv = styled.div`
 
 
 
-function NavBar(props){
+
+
+export default function NavBar(props){
 const cart = useContext(CartContext)
-
-
-
-
+const count = useContext(CartCountContext)
 
     return (
         
@@ -57,7 +55,7 @@ const cart = useContext(CartContext)
               
               <CartCheckoutHolder >
                 
-                 <p>{props.value}</p> 
+                 <p>{count.cartCount}</p>
                
                 <ShoppingCart />
                 <CartLink to="/Checkout"> Checkout</CartLink>
@@ -69,4 +67,3 @@ const cart = useContext(CartContext)
       );
     
 }
-export default NavBar

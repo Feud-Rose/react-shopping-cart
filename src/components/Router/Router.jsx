@@ -4,6 +4,7 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Store from "../Store/Store";
 import App from "../../App";
 import Checkout from "../Checkout/Checkout";
+import Submit from "../Submit.jsx/Submit";
 
 
 
@@ -25,7 +26,12 @@ const router = createBrowserRouter([
     { 
       path: "/Checkout",
       element: <Checkout />
+    },
+    {
+      path: "/Submit",
+      element: <Submit />
     }
+   
 ]
 }
 ]);

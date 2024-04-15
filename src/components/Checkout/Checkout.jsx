@@ -65,7 +65,7 @@ const StyledQuantityButton = styled.button`
 
 `;
 
-const Checkout = () => {
+const Checkout = (props) => {
 
 
 const cart = useContext(CartContext)
@@ -77,15 +77,14 @@ const handleDelete = (data) => {
     nextCart.setUserCart(filteredCart)  
        
         }
-
+ 
 
 
 const userCart = cart.userCart
 
-
     return(
         <>
-
+  
         <h2>Checkout</h2>
            
         {userCart.length > 0 ?

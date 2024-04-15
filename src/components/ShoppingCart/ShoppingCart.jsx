@@ -11,7 +11,7 @@ margin-left: auto;
 const ShoppingCart = () => {
     return(
       <div>
-        <StyledCartIcon src="../src/assets/shopping-cart.svg" alt=""/>
+        <StyledCartIcon src="../src/assets/shopping-cart.svg" alt="icon"/>
       </div>
     )
     

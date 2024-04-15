@@ -1,11 +1,12 @@
 import { useState,useEffect,useContext } from "react";
 import { CartContext } from "../ShoppingCart/CartContext";
+import { Link,useNavigate } from "react-router-dom";
 
 
 export default function HandleTotalDiv() {
-
     const cart = useContext(CartContext)
-
+    const navigate = useNavigate();
+    
     const [totals,setTotals] = useState ({
         subtotal: 0,
         taxes: 0,
@@ -39,7 +40,7 @@ export default function HandleTotalDiv() {
             ...prevState,
             taxes: roundedTax})
             )
-         }, [cart,totals]);
+         }, [cart,totals.subtotal]);
          return( 
             totals.taxes
         )
@@ -53,10 +54,31 @@ export default function HandleTotalDiv() {
         ...prevState,
         total: roundedTotal
     }))
-    }, [cart,totals]);
+    }, [cart,totals.subtotal]);
     
     return totals.total
     }
+
+    const handleSubmit = () =>{
+        console.log(count)
+
+        ///send order off to hypothetical server
+
+        ///then wait for confirmation
+
+        ///then reset cart and totals
+        
+        setTotals(prevState => ({ subtotal: 0,
+            taxes: 0,
+            shipping: 5.95,
+            total: 0}))
+        
+
+        cart.setUserCart(prevState => (prevState.userCart = []))
+
+    } 
+    
+
 
 return( 
     <>
@@ -64,15 +86,14 @@ return(
         <h3>Subtotal</h3>
         <div>${handleSubtotal()}</div>
         <h3>Tax and Shipping</h3>
-        <div>Tax: $ {handleTaxes()} (5%)</div>
+        <div>Tax: ${handleTaxes()} (5%)</div>
         <div>Shipping:${totals.shipping}</div>
     </div>
     <div>
         <h3>Total</h3>
         <div>${handleTotal()}</div>
-        
-    
-        <button> {/*call onClick */}Submit</button>
+        <button onClick={() => handleSubmit()}>Submit</button>
+
     </div>
 </>)
 }
