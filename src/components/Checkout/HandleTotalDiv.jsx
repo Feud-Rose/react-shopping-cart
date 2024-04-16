@@ -24,7 +24,6 @@ export default function HandleTotalDiv() {
         useEffect(() => {
         const temptTotal = cart.userCart.reduce(
             (oldTotal, newTotal) => oldTotal + (newTotal.price * newTotal.quantity), 0);
-            console.log(totals.subtotal)
         const roundedSubTotal = temptTotal.toFixed(2)
         setTotals(prevState => ({
             ...prevState,
@@ -38,7 +37,6 @@ export default function HandleTotalDiv() {
     
     const handleTaxes = () => {
         useEffect(() => {
-        console.log(totals)
         const tax =+totals.subtotal * 0.05
         const roundedTax = tax.toFixed(2)
         setTotals(prevState => ({

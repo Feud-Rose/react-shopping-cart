@@ -9,11 +9,12 @@ import HandleTotalDiv from "./HandleTotalDiv";
 const StoreDiv = styled.div`
 display: flex;
 width:90%;
+max-width:1200px;
 margin: 1em auto;
 `;
 
 const CartDiv = styled.div`
-background-color: #0C1B33;
+background-color: #0A5C57;
 max-width:700px;
 margin: 1em;
 `;

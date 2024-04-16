@@ -8,12 +8,13 @@ import { CartCountContext } from "../ShoppingCart/CartCountContext";
 
 const StyledLink = styled(Link)`
   padding: 0.75em 1em;
-  background-color: #333333;
-  color: white;
+  background-color: ;
+  color: black;
   display: inline-flex;
   text-decoration: none;
   border-radius: .25em;
   margin:0.25em;
+  border: solid #0A0A0A 0.25em;
   &:hover {
   background-color: #11109c;
   }
@@ -33,7 +34,8 @@ const CartLink = styled(StyledLink)`
 const StyledDiv = styled.div`
     text-align: center;
     display:flex;
-    background-color: #e6e6ea;
+    background-color: #e7ecef;
+    border: solid #0A0A0A 0.25em;
     max-width: 100%;
 
 `;
@@ -45,8 +47,7 @@ const StyledDiv = styled.div`
 export default function NavBar(props){
 const cart = useContext(CartContext)
 const count = useContext(CartCountContext)
-console.log(count)
-console.log(cart)
+
     return (
         
           <StyledDiv role="navigation">

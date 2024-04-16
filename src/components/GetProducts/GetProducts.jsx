@@ -7,13 +7,13 @@ const StoreProductsDiv = styled.div`
   min-width: 230px;
   max-width: 95%;
   padding: 0.75em 1em;
-  background-color: #333333;
+  background-color: #c0c0c0;
   display: flex;
   flex-flow: row wrap ;
   text-decoration: none;
   border-radius: .25em;
-  margin:0.25em;
- 
+  margin:auto;
+  border: solid #0A0A0A 0.25em;
  
 `;
 
@@ -23,7 +23,7 @@ const ProductCardDiv = styled.div`
   max-width: 300px;
   height:200px;
   padding: 0.75em 1em;
-  background-color: #e6e6ea;
+  background-color: #FFFFFF;
   display: grid;
   grid-template-rows: 50px 100px 50px;
   grid-template-columns: auto auto;
@@ -50,9 +50,8 @@ overflow: hidden;
 const ImagePreview = styled.img`
 max-height:auto; 
 max-width:80px;
-border: solid black 3px;
-border-radius: 10%;
-padding:2px;
+
+
 `;
 const StyledPrice = styled.p`
 grid-area: 3/1;
