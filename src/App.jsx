@@ -20,16 +20,18 @@ function App() {
       (prevValue, currentValue) => prevValue + currentValue.quantity,
       0)
     setCartCount(total)
+    }
+    else setCartCount(() => (0))
   
-    }},[userCart])
-    return (<p>{cartCount}</p>)
+    },[userCart])
+    
     
   }
   return (
     
     <CartContext.Provider value={{userCart,setUserCart}}>
     <CartCountContext.Provider value={{cartCount, setCartCount}}>
-      <NavBar value={handleCartCount()}/>
+      <NavBar count={handleCartCount()}/>
       <Outlet/>
     </CartCountContext.Provider>
     </CartContext.Provider>

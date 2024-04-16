@@ -1,12 +1,17 @@
 import { useState,useEffect,useContext } from "react";
 import { CartContext } from "../ShoppingCart/CartContext";
 import { Link,useNavigate } from "react-router-dom";
-
+import { CartCountContext } from "../ShoppingCart/CartCountContext";
 
 export default function HandleTotalDiv() {
     const cart = useContext(CartContext)
     const navigate = useNavigate();
-    
+    const count = useContext(CartCountContext)
+
+    const handleCartCountReset = () =>{
+        count.setCartCount(() => (0))  
+    }
+
     const [totals,setTotals] = useState ({
         subtotal: 0,
         taxes: 0,
@@ -60,7 +65,6 @@ export default function HandleTotalDiv() {
     }
 
     const handleSubmit = () =>{
-        console.log(count)
 
         ///send order off to hypothetical server
 
@@ -75,7 +79,7 @@ export default function HandleTotalDiv() {
         
 
         cart.setUserCart(prevState => (prevState.userCart = []))
-
+        handleCartCountReset()
     } 
     
 

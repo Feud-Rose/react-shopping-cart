@@ -25,7 +25,7 @@ const ProductCardDiv = styled.div`
   padding: 0.75em 1em;
   background-color: #e6e6ea;
   display: grid;
-  grid-template-rows: 25px 125px 50px;
+  grid-template-rows: 50px 100px 50px;
   grid-template-columns: auto auto;
   justify-self: center;
   text-decoration: none;
@@ -34,16 +34,25 @@ const ProductCardDiv = styled.div`
   text-overflow: ellipsis;
 `;
 
+const StyledTitle= styled.div`
+text-overflow: ellipsis;
+grid-area: 1/2;
+max-width: 20ch;
+overflow: hidden;
+`
 const StyledDescription = styled.p`
 text-overflow: ellipsis;
 grid-area: 2/2;
 max-width: 75ch;
-
+overflow: hidden;
 `
 
 const ImagePreview = styled.img`
 max-height:auto; 
-max-width:100px;
+max-width:80px;
+border: solid black 3px;
+border-radius: 10%;
+padding:2px;
 `;
 const StyledPrice = styled.p`
 grid-area: 3/1;
@@ -107,7 +116,7 @@ const GetProducts = () => {
             {products.map((item) => 
             <ProductCardDiv key={item.id}>
                 <ImagePreview src={item.image} alt={item.title} srcSet="" />
-                <div>{item.title}</div>
+                <StyledTitle>{item.title}</StyledTitle>
                 
                 <StyledDescription> {item.description.length > 70 ?
                 `${item.description.substring(0, 70)}...` : item.description}

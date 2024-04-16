@@ -45,7 +45,8 @@ const StyledDiv = styled.div`
 export default function NavBar(props){
 const cart = useContext(CartContext)
 const count = useContext(CartCountContext)
-
+console.log(count)
+console.log(cart)
     return (
         
           <StyledDiv role="navigation">
