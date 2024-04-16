@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import cartIcon from "/src/assets/shopping-cart.svg"
+
 
 const StyledCartIcon = styled.img`
 max-width: 45px;
@@ -11,7 +13,7 @@ margin-left: auto;
 const ShoppingCart = () => {
     return(
       <div>
-        <StyledCartIcon src="../src/assets/shopping-cart.svg" alt="icon"/>
+        <StyledCartIcon src={cartIcon} alt="icon"/>
       </div>
     )
     
